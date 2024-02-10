@@ -52,6 +52,7 @@ class MyHomePage extends StatelessWidget {
             child: Column(
               children: [
                 TitleSection(heading: 'How to make french toast',),
+                ImageSection(image: 'images/mainImage.png'),
                 
               ],
             ),
@@ -95,6 +96,31 @@ class TitleSection extends StatelessWidget {
           ),
         ],
       );
+  }
+}
+
+class ImageSection extends StatelessWidget {
+  const ImageSection({
+    super.key,
+    required this.image,
+    });
+
+    final String image;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 15),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(15),
+        child: Image.asset(
+          image,
+          width: 600,
+          height: 240,
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
   }
 }
 
