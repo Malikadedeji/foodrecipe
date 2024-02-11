@@ -66,7 +66,10 @@ class MyHomePage extends StatelessWidget {
                   locationImage: 'images/location.png',
                   locationText: ' Bali, Indonesia',
                 ),
-                
+                IngredientsSection(
+                  sectiontitle: 'Ingredients', 
+                  itemsno: '5 items',
+                ),
               ],
             ),
           ),
@@ -281,3 +284,41 @@ class DetailsSection extends StatelessWidget {
   }
 }
 
+class IngredientsSection extends StatelessWidget {
+  const IngredientsSection({
+    super.key,
+    required this.sectiontitle,
+    required this.itemsno,
+    });
+
+    final String sectiontitle;
+    final String itemsno;
+
+  @override
+  Widget build(BuildContext context) {
+    return  Padding(
+      padding: const EdgeInsets.only(bottom: 15),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            sectiontitle,
+            style: const TextStyle(
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.bold,
+              fontSize: 18.0,
+            ),
+          ),
+          Text(
+            itemsno,
+            style: const TextStyle(
+              fontFamily: 'Poppins-Thin',
+              fontSize: 12.0,
+              color:const Color.fromARGB(250, 169, 169, 169),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
