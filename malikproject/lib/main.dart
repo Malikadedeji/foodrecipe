@@ -32,7 +32,7 @@ class MyHomePage extends StatelessWidget {
       return Scaffold (
         appBar: AppBar(
           leading: Padding(
-            padding: const EdgeInsets.only(left: 15.0),
+            padding: const EdgeInsets.only(left: 5.0),
             child: IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () {},
@@ -52,7 +52,20 @@ class MyHomePage extends StatelessWidget {
             child: Column(
               children: [
                 TitleSection(heading: 'How to make french toast',),
-                ImageSection(image: 'images/mainImage.png'),
+                ImageSection(
+                  image: 'images/mainImage.png',
+                  centerImage: 'images/playButton.png',
+                  ),
+                ReviewSection(
+                  ratings: ' 4,5',
+                  total: '  (300 Reviews)'
+                ),
+                DetailsSection(
+                  image: 'images/unsplash.png',
+                  names: 'Roberta Anny',
+                  locationImage: 'images/location.png',
+                  locationText: ' Bali, Indonesia',
+                ),
                 
               ],
             ),
@@ -76,7 +89,7 @@ class TitleSection extends StatelessWidget {
       Row( mainAxisAlignment: MainAxisAlignment.start,
         children: [
           SizedBox(
-            width: 250.0,
+            width: 270.0,
             
             child: Padding(
               padding: const EdgeInsets.only(bottom: 20),
@@ -85,7 +98,7 @@ class TitleSection extends StatelessWidget {
                     softWrap: true,
                     textAlign: TextAlign.justify,
                     style: const TextStyle(
-                      fontFamily: '/fonts/Poppins-ExtraBold.ttf', 
+                      fontFamily: 'Poppins', 
                       fontWeight: FontWeight.bold,
                       fontSize: 25.0,
                       height: 1.2,
@@ -103,9 +116,11 @@ class ImageSection extends StatelessWidget {
   const ImageSection({
     super.key,
     required this.image,
+    required this.centerImage,
     });
 
     final String image;
+    final String centerImage;
 
   @override
   Widget build(BuildContext context) {
@@ -113,12 +128,154 @@ class ImageSection extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 15),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(15),
-        child: Image.asset(
-          image,
-          width: 600,
-          height: 240,
-          fit: BoxFit.cover,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Image.asset(
+              image,
+              width: 600,
+              height: 200,
+              fit: BoxFit.cover,
+            ),
+            Positioned(
+              child: Image.asset(
+              centerImage,
+              
+            ),
+            ), 
+          ],
         ),
+        
+      ),
+    );
+  }
+}
+
+class ReviewSection extends StatelessWidget {
+  const ReviewSection({
+    super.key,
+    required this.ratings,
+    required this.total,
+    });
+
+    final String ratings;
+    final String total;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 15),
+      child: Row(
+        children: [
+          const Icon(
+              Icons.star,
+              color: Color.fromARGB(255, 226, 160, 7),
+            ),
+          Text(
+            ratings,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Poppins',
+            ),
+      
+          ),
+          Text(
+            total,
+            style: const TextStyle(
+              fontFamily: 'Poppins-Thin',
+              fontSize: 12.0,
+              color:const Color.fromARGB(250, 169, 169, 169),
+            ),
+      
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class DetailsSection extends StatelessWidget {
+  const DetailsSection({
+    super.key,
+    required this.image,
+    required this.names,
+    required this.locationImage,
+    required this.locationText,
+});
+
+    final String image;
+    final String names;
+    final String locationImage;
+    final String locationText;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 15.0),
+                child: Image.asset(
+                  image,
+                  ),
+              ),
+      
+            Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                names,
+                style: const TextStyle(
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Row(
+                children: [
+                  Image.asset(
+                    locationImage,
+                  ),
+                  Text(
+                    locationText,
+                    style: const TextStyle(
+                      fontFamily: 'Poppins-Thin',
+                      fontSize: 12.0,
+                      color:const Color.fromARGB(250, 169, 169, 169),
+                    ),
+                  ),
+                ],
+              )
+            ],
+            ),
+          ],
+          ),
+          TextButton(
+            onPressed: (){},
+            style: TextButton.styleFrom(
+              backgroundColor: const Color.fromARGB(255, 226, 62, 62),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12)
+              )
+            ), 
+            
+            child: 
+              const Padding (
+                padding: EdgeInsets.symmetric(horizontal: 4.0),
+                child: Text(
+                  'Follow',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'Poppins',
+                    fontSize: 12.0,
+                ),
+                ),
+              ),
+          ),
+        ],
       ),
     );
   }
