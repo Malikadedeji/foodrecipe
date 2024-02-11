@@ -70,6 +70,21 @@ class MyHomePage extends StatelessWidget {
                   sectiontitle: 'Ingredients', 
                   itemsno: '5 items',
                 ),
+                OptionsSection(
+                  image: 'images/bread.png', 
+                  option: 'Bread', 
+                  weight: '200g',
+                ),
+                OptionsSection(
+                  image: 'images/egg.png', 
+                  option: 'Eggs', 
+                  weight: '200g',
+                ),
+                OptionsSection(
+                  image: 'images/bread.png', 
+                  option: 'Milk', 
+                  weight: '200g',
+                ),
               ],
             ),
           ),
@@ -137,7 +152,7 @@ class ImageSection extends StatelessWidget {
             Image.asset(
               image,
               width: 600,
-              height: 200,
+              height: 217,
               fit: BoxFit.cover,
             ),
             Positioned(
@@ -318,6 +333,72 @@ class IngredientsSection extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class OptionsSection extends StatelessWidget {
+  const OptionsSection({
+    super.key,
+    required this.image,
+    required this.option,
+    required this.weight,
+    });
+
+    final String image;
+    final String option;
+    final String weight;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8.0),
+      child: Container(
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: Colors.transparent, width: 2),
+        color:const Color.fromARGB(30, 48, 48, 48),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: Colors.transparent, width: 6),
+                      color: Colors.white,
+                    ),
+                    child: Image.asset(
+                      image,
+                    )  
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Text(
+                      option,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Poppins',
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              Text(
+                weight,
+                style: const TextStyle(
+                  fontFamily: 'Poppins-Thin',
+                  fontSize: 12.0,
+                  color:const Color.fromARGB(250, 169, 169, 169),
+                ),
+              )
+            ],
+          ),
+        )
       ),
     );
   }
