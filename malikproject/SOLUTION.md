@@ -22,4 +22,4 @@ in the instruction.
 
 # Follow the link below to find a screenshot of the project.
 
-<img width="415" alt="FoodRecipe" src="https://github.com/Malikadedeji/foodrecipe/assets/my-food-recipe-page.jpg">
+<img width="415" alt="FoodRecipe" src="https://github.com/Malikadedeji/foodrecipe/blob/1d29b4221d340195d9c60f0916e4faf8caeb7a59/malikproject/assets/my-food-recipe-page.jpg">
